@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial=1.0">
+  <title>隐逸 SPA养生会所</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+    body {
+      font-family:"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+      background:#060606;
+      color:#e8e8e8;
+      line-height:1.8;
+    }
+    /* 轮播头部 */
+    .header-wrap{
+      position:relative;
+      height:100vh;
+      overflow:hidden;
+    }
+    .slider{
+      width:100%;
+      height:100%;
+      position:absolute;
+      top:0;
+      left:0;
+    }
+    .slider-img{
+      position:absolute;
+      width:100%;
+      height:100%;
+      opacity:0;
+      transition:opacity 1.5s ease;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+    .slider-img.active{
+      opacity:1;
+    }
+    .slider-mask{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.85));
+    }
+    .header-content{
+      position:relative;
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      z-index:2;
+      padding:0 20px;
+    }
+    .header-content h1 {
+      font-size:46px;
+      letter-spacing:8px;
+      color:#fff;
+      margin-bottom:12px;
+    }
+    .header-content p {
+      font-size:16px;
+      color:#c9c9c9;
+      letter-spacing:1px;
+    }
+    .btn {
+      margin-top:35px;
+      padding:15px 40px;
+      border:1px solid #c4a878;
+      color:#c4a878;
+      text-decoration:none;
+      transition:0.4s;
+      background:rgba(0,0,0,0.2);
+    }
+    .btn:hover {
+      background:#c4a878;
+      color:#000;
+    }
+    /* 通用 */
+    section {
+      padding:80px 25px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    h2 {
+      color:#c4a878;
+      margin-bottom:30px;
+      font-size:26px;
+      letter-spacing:3px;
+      position:relative;
+    }
+    h2::after{
+      content:"";
+      display:block;
+      width:60px;
+      height:2px;
+      background:#c4a878;
+      margin-top:8px;
+    }
+    p{
+      color:#b5b5b5;
+    }
+    /* 项目 */
+    .services div {
+      display:flex;
+      justify-content:space-between;
+      padding:18px 8px;
+      border-bottom:1px solid #222;
+    }
+    .services div:hover{
+      background:rgba(196,168,120,0.05);
+    }
+    .services span:last-child{
+      color:#c4a878;
+    }
+    /* 环境 */
+    .gallery {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+    .gallery img {
+      width:100%;
+      height:280px;
+      object-fit:cover;
+      border-radius:8px;
+      transition:0.5s;
+      filter:brightness(0.85);
+    }
+    .gallery img:hover{
+      transform:scale(1.03);
+      filter:brightness(1);
+    }
+    /* 联系预约板块 */
+    .contact{
+      padding:80px 25px;
+      text-align:center;
+      line-height:2.2;
+    }
+    .contact-info{
+      margin:20px 0;
+      font-size:17px;
+    }
+    .contact-info span{
+      color:#c4a878;
+    }
+    /* 底部 */
+    footer {
+      text-align:center;
+      padding:40px;
+      border-top:1px solid #222;
+      color:#666;
+      background:#030303;
+    }
+    .fixed-btn {
+      position:fixed;
+      bottom:0;
+      width:100%;
+      background:#c4a878;
+      text-align:center;
+      padding:16px;
+      z-index:99;
+    }
+    .fixed-btn a {
+      color:#000;
+      font-weight:bold;
+      text-decoration:none;
+      letter-spacing:1px;
+    }
+    html{
+      scroll-behavior:smooth;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 轮播头部 -->
+<div class="header-wrap">
+  <div class="slider">
+    <div class="slider-img active" style="background-image: url('photo/imgi_525_pexels-photo-27925507.jpg');"></div>
+    <div class="slider-img" style="background-image: url('photo/photo-1552693673-1bf958298935.jpg');"></div>
+    <div class="slider-img" style="background-image: url('photo/photo-1544161515-4ab6ce6db874.jpg');"></div>
+  </div>
+  <div class="slider-mask"></div>
+  <div class="header-content">
+    <h1>隐逸 · SPA养生会所</h1>
+    <p>沉浸式放松体验 · 专业调理 · 舒缓身心压力</p>
+    <!-- 直接跳转到下方预约板块 #contact -->
+    <a href="#contact" class="btn">立即预约</a>
+  </div>
+</div>
+
+<section>
+  <h2>品牌理念</h2>
+  <p>我们专注于为都市人群提供高品质放松体验，在舒适静谧的空间中，让身体得到释放，让精神得到恢复。每一次服务，都是一次深度疗愈。</p>
+</section>
+
+<section>
+  <h2>精选项目</h2>
+  <div class="services">
+    <div><span>全身舒缓SPA（60分钟）</span><span>￥128</span></div>
+    <div><span>经络调理按摩（60分钟）</span><span>￥108</span></div>
+    <div><span>肩颈深度放松（30分钟）</span><span>￥68</span></div>
+    <div><span>精油理疗（60分钟）</span><span>￥158</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>环境展示</h2>
+  <div class="gallery">
+    <img src="photo/photo-1544161515-4ab6ce6db874.jpg">
+    <img src="photo/photo-1506126613408-eca07ce68773.jpg">
+    <img src="photo/photo-1506126613408-eca07ce68773.jpg">
+    <img src="photo/imgi_289_pexels.jpg">
+  </div>
+</section>
+
+<section>
+  <h2>为什么选择我们</h2>
+  <p>· 资深技师团队，经验丰富</p>
+  <p>· 私密空间，安静舒适</p>
+  <p>· 严选产品，品质保障</p>
+  <p>· 注重每一位客户体验</p>
+</section>
+
+<!-- 预约联系板块（锚点 #contact） -->
+<section id="contact" class="contact">
+  <h2>预约联系</h2>
+  <div class="contact-info">
+    <p><span>📍 店铺地址：</span> 请填写你的详细地址</p>
+    <p><span>📞 预约电话：</span> 123456</p>
+    <p><span>💬 微信咨询：</span> 123456</p>
+    <p><span>🕒 营业时间：</span> 10:00 - 23:00</p>
+  </div>
+  <a href="tel:123456" class="btn">一键拨打电话</a>
+</section>
+
+<footer>
+  隐逸 SPA · 让身体回归平衡
+</footer>
+
+<div class="fixed-btn">
+  <a href="#contact">📞 一键预约</a>
+</div>
+
+<script>
+  // 轮播
+  const imgs = document.querySelectorAll('.slider-img');
+  let index = 0;
+  function slide(){
+    imgs.forEach(i=>i.classList.remove('active'));
+    index++;
+    if(index>=imgs.length)index=0;
+    imgs[index].classList.add('active');
+  }
+  setInterval(slide,3500);
+</script>
+
+</body>
+</html>
